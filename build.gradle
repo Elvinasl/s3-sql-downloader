@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.tools'
+version = '1.0.0'
+description = 'S3 SQL Downloader CLI'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.shell:spring-shell-dependencies:3.2.1"
+        mavenBom "software.amazon.awssdk:bom:2.23.12"
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.shell:spring-shell-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'software.amazon.awssdk:s3'
+    runtimeOnly 'org.postgresql:postgresql'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
