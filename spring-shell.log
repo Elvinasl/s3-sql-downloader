@@ -1,1 +1,0 @@
-1765955912185:download-sql --query "select * from files where company_id = 3"
