@@ -36,8 +36,19 @@ You can configure the tool using `src/main/resources/application-local.yaml` (gi
 | `S3_BUCKET_NAME` | S3 Target Bucket | *Empty* |
 | `S3_REGION` | AWS Region | `us-east-1` |
 
-## 🛠️ Build & Run
 
-### 1. Clone and Build
-```bash
-./gradlew clean build
+
+##  Usage
+Once the application starts, you will see the interactive shell prompt.
+You can run any SELECT query. The result set MUST contain columns named id (the S3 Key) and filename.
+
+
+### Example: Download all files for a specific company
+```shell
+shell:> download-sql --query "SELECT * FROM files WHERE company_id = 3"
+```
+### Output
+Files are saved to the downloads/ directory in the project root.
+
+## License
+MIT
